@@ -9,6 +9,14 @@
 #include <JuceHeader.h>
 #include "MainComponent.h"
 
+#include "cSenders.h"
+#include "hSenders.h"
+#include "pSenders.h"
+
+#include "cRecievers.h"
+#include "hRecievers.h"
+#include "pSenders.h"
+
 //==============================================================================
 class faderXOSApplication  : public juce::JUCEApplication
 {
@@ -16,7 +24,7 @@ public:
     //==============================================================================
     faderXOSApplication() {}
 
-    const juce::String getApplicationName() override       { return ProjectInfo::projectName; }
+    const juce::String getApplicationName() override       { return                 ProjectInfo::projectName; }
     const juce::String getApplicationVersion() override    { return ProjectInfo::versionString; }
     bool moreThanOneInstanceAllowed() override             { return true; }
 

@@ -16,6 +16,41 @@ cSenders::cSenders()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
+    
+           //==============================================================================
+           senderLabelOne.attachToComponent(&rotaryKnobOne, false);
+           addAndMakeVisible (senderLabelOne);
+
+           rotaryKnobOne.setRange(0, 127);
+           rotaryKnobOne.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+           rotaryKnobOne.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
+           addAndMakeVisible(rotaryKnobOne);
+
+           senderLabelTwo.attachToComponent(&rotaryKnobTwo, false);
+           addAndMakeVisible(senderLabelTwo);
+
+           rotaryKnobTwo.setRange(0, 127);
+           rotaryKnobTwo.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+           rotaryKnobTwo.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
+           addAndMakeVisible(rotaryKnobTwo);
+
+           senderLabelThree.attachToComponent(&rotaryKnobThree, false);
+           addAndMakeVisible(senderLabelThree);
+
+           rotaryKnobThree.setRange(0, 127);
+           rotaryKnobThree.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+           rotaryKnobThree.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
+           addAndMakeVisible(rotaryKnobThree);
+
+           senderLabelFour.attachToComponent(&rotaryKnobFour, false);
+           addAndMakeVisible(senderLabelFour);
+
+           rotaryKnobFour.setRange(0, 127);
+           rotaryKnobFour.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+           rotaryKnobFour.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
+           addAndMakeVisible(rotaryKnobFour);
+           //==============================================================================
+
 
 }
 
@@ -45,7 +80,9 @@ void cSenders::paint (juce::Graphics& g)
 
 void cSenders::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+    rotaryKnobOne.setBoundsRelative(0.00, 0.10, 0.25, 0.80);
+    rotaryKnobTwo.setBoundsRelative(0.25, 0.10, 0.25, 0.80);
+    rotaryKnobThree.setBoundsRelative(0.50, 0.10, 0.25, 0.80);
+    rotaryKnobFour.setBoundsRelative(0.75, 0.10, 0.25, 0.80);
 
 }
