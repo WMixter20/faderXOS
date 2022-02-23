@@ -4,6 +4,22 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="xdBAaX" name="faderXOS">
     <GROUP id="{7782F6A4-AD52-6D42-5DA3-0C9873830B1E}" name="Source">
+      <GROUP id="{A9AF58B7-7932-49DD-A2A8-EAF6A24D84A7}" name="Recievers">
+        <FILE id="YWOvsR" name="cRecievers.cpp" compile="1" resource="0" file="Source/cRecievers.cpp"/>
+        <FILE id="GNgzfu" name="cRecievers.h" compile="0" resource="0" file="Source/cRecievers.h"/>
+        <FILE id="bUDizv" name="hRecievers.cpp" compile="1" resource="0" file="Source/hRecievers.cpp"/>
+        <FILE id="rrxUkv" name="hRecievers.h" compile="0" resource="0" file="Source/hRecievers.h"/>
+        <FILE id="TeyYVK" name="pRecievers.cpp" compile="1" resource="0" file="Source/pRecievers.cpp"/>
+        <FILE id="ihDo2r" name="pRecievers.h" compile="0" resource="0" file="Source/pRecievers.h"/>
+      </GROUP>
+      <GROUP id="{1AC2D489-CE19-6861-24A6-99D28C1C0FDE}" name="Senders">
+        <FILE id="KemNJP" name="cSenders.cpp" compile="1" resource="0" file="Source/cSenders.cpp"/>
+        <FILE id="W16UEg" name="cSenders.h" compile="0" resource="0" file="Source/cSenders.h"/>
+        <FILE id="F4QtTZ" name="hSenders.cpp" compile="1" resource="0" file="Source/hSenders.cpp"/>
+        <FILE id="oANtUf" name="hSenders.h" compile="0" resource="0" file="Source/hSenders.h"/>
+        <FILE id="VVfnbp" name="pSenders.cpp" compile="1" resource="1" file="Source/pSenders.cpp"/>
+        <FILE id="N8mcqa" name="pSenders.h" compile="0" resource="0" file="Source/pSenders.h"/>
+      </GROUP>
       <FILE id="naCET9" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="w9ALr1" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
     </GROUP>
