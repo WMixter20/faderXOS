@@ -51,31 +51,54 @@ cSenders::cSenders()
            addAndMakeVisible(rotaryKnobFour);
            //==============================================================================
 
+            rotaryKnobOne.onValueChange = [this]                                                    //OSC Message of Knob 1
+                {
+                if (!senderOne.send("/1/fader1", (float)rotaryKnobOne.getValue()))
+                    showConnectionErrorMessage("Error: could not send OSC message.");
+               
+                };
+                if (!senderOne.connect(targetIp, portNum))                                             //Target/Port of Knob 1 for TouchOSC
+                    showConnectionErrorMessage("Error: could not connect to UDP port " + portNum);
 
-}
 
-cSenders::~cSenders()
-{
-}
+           
+            //==============================================================================
 
-void cSenders::paint (juce::Graphics& g)
-{
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
+            rotaryKnobTwo.onValueChange = [this]                                                   //OSC Message of Knob 2
+                {
+                if (!senderTwo.send("/1/fader2", (float)rotaryKnobTwo.getValue()))
+                    showConnectionErrorMessage("Error: could not send OSC message.");
+                };
 
-       You should replace everything in this method with your own
-       drawing code..
-    */
+                if (!senderTwo.connect(targetIp, portNum))                                             //Target/Port of Knob 2
+                showConnectionErrorMessage("Error: could not connect to UDP port " + portNum);
 
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+            //==============================================================================
 
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+            rotaryKnobThree.onValueChange = [this]                                                 //OSC Message of Knob 3
+                {
+                if (!senderThree.send("/1/fader3", (float)rotaryKnobThree.getValue()))
+                    showConnectionErrorMessage("Error: could not send OSC message.");
+                };
 
-    g.setColour (juce::Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("cSenders", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+                if (!senderThree.connect(targetIp, portNum))                                           //Target/Port of Knob 3
+                showConnectionErrorMessage("Error: could not connect to UDP port " + portNum);
+
+            //==============================================================================
+
+            rotaryKnobFour.onValueChange = [this]                                                  //OSC Message of Knob 4
+                {
+                if (!senderFour.send("/1/fader4", (float)rotaryKnobFour.getValue()))
+                    showConnectionErrorMessage("Error: could not send OSC message.");
+                };
+
+                if (!senderFour.connect(targetIp, portNum))                                            //Target/Port of Knob 4
+                showConnectionErrorMessage("Error: could not connect to UDP port " + portNum);
+
+
+    
+            
+
 }
 
 void cSenders::resized()
@@ -85,4 +108,11 @@ void cSenders::resized()
     rotaryKnobThree.setBoundsRelative(0.50, 0.10, 0.25, 0.80);
     rotaryKnobFour.setBoundsRelative(0.75, 0.10, 0.25, 0.80);
 
+}
+void cSenders::showConnectionErrorMessage(const juce::String &messageText)
+{
+    juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::WarningIcon,
+          "Connection Error",
+          messageText,
+          "Ok");
 }

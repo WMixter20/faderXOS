@@ -19,10 +19,14 @@ class cSenders  : public juce::Component
 {
 public:
     cSenders();
-    ~cSenders() override;
+    //~cSenders() override;
 
-    void paint (juce::Graphics&) override;
+    //void paint (juce::Graphics&) override;
     void resized() override;
+    void showConnectionErrorMessage(const juce::String& messageText);
+    int portNum = 9000;
+    juce::String targetIp = "192.168.86.30";
+    
 
 private:
     juce::Slider rotaryKnobOne,

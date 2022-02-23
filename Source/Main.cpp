@@ -9,13 +9,6 @@
 #include <JuceHeader.h>
 #include "MainComponent.h"
 
-#include "cSenders.h"
-#include "hSenders.h"
-#include "pSenders.h"
-
-#include "cRecievers.h"
-#include "hRecievers.h"
-#include "pSenders.h"
 
 //==============================================================================
 class faderXOSApplication  : public juce::JUCEApplication
@@ -101,6 +94,7 @@ public:
         */
 
     private:
+        
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainWindow)
     };
 
