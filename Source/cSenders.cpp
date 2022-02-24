@@ -53,12 +53,12 @@ cSenders::cSenders()
 
             rotaryKnobOne.onValueChange = [this]                                                    //OSC Message of Knob 1
                 {
-                if (!senderOne.send("/1/fader1", (float)rotaryKnobOne.getValue()))
+                if (!senderOne.send( message1, (float)rotaryKnobOne.getValue()))
                     showConnectionErrorMessage("Error: could not send OSC message.");
                
                 };
                 if (!senderOne.connect(targetIp, portNum))                                             //Target/Port of Knob 1 for TouchOSC
-                    showConnectionErrorMessage("Error: could not connect to UDP port " + portNum);
+                    showConnectionErrorMessage("Error: could not connect to UDP port ");
 
 
            
@@ -66,29 +66,29 @@ cSenders::cSenders()
 
             rotaryKnobTwo.onValueChange = [this]                                                   //OSC Message of Knob 2
                 {
-                if (!senderTwo.send("/1/fader2", (float)rotaryKnobTwo.getValue()))
+                if (!senderTwo.send( message2, (float)rotaryKnobTwo.getValue()))
                     showConnectionErrorMessage("Error: could not send OSC message.");
                 };
 
                 if (!senderTwo.connect(targetIp, portNum))                                             //Target/Port of Knob 2
-                showConnectionErrorMessage("Error: could not connect to UDP port " + portNum);
+                showConnectionErrorMessage("Error: could not connect to UDP port ");
 
             //==============================================================================
 
             rotaryKnobThree.onValueChange = [this]                                                 //OSC Message of Knob 3
                 {
-                if (!senderThree.send("/1/fader3", (float)rotaryKnobThree.getValue()))
+                if (!senderThree.send( message3, (float)rotaryKnobThree.getValue()))
                     showConnectionErrorMessage("Error: could not send OSC message.");
                 };
 
                 if (!senderThree.connect(targetIp, portNum))                                           //Target/Port of Knob 3
-                showConnectionErrorMessage("Error: could not connect to UDP port " + portNum);
+                showConnectionErrorMessage("Error: could not connect to UDP port ");
 
             //==============================================================================
 
             rotaryKnobFour.onValueChange = [this]                                                  //OSC Message of Knob 4
                 {
-                if (!senderFour.send("/1/fader4", (float)rotaryKnobFour.getValue()))
+                if (!senderFour.send( message4, (float)rotaryKnobFour.getValue()))
                     showConnectionErrorMessage("Error: could not send OSC message.");
                 };
 
