@@ -26,7 +26,7 @@ public:
     void resized() override;
     void showConnectionErrorMessage(const juce::String& messageText);
     
-    int portNum = 9000;
+    int portNum = 7777;
     //"192.168.86.30"
     juce::String targetIp = "192.168.86.31";
     
@@ -43,10 +43,10 @@ private:
                  rotaryKnobThree,
                  rotaryKnobFour;
 
-   juce::Label senderLabelOne { {}, "Sender 1" },
-               senderLabelTwo{ {}, "Sender 2" },
-               senderLabelThree{ {}, "Sender 2" },
-               senderLabelFour{ {}, "Sender 2" };
+   juce::Label senderLabelOne { {}, "Sending " + message1 },
+               senderLabelTwo{ {}, "Sending " + message2 },
+               senderLabelThree{ {}, "Sending " + message3 },
+               senderLabelFour{ {}, "Sending " + message4 };
 
 
     juce::OSCSender senderOne,

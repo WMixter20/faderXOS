@@ -28,7 +28,7 @@ public:
     
     void showConnectionErrorMessage(const juce::String& messageText);
 
-    int portNum = 9000;
+    int portNum = 8000;
     juce::String recieverIp = "192.168.86.31";
     
     juce::String message1 = "/1/fader1";
@@ -46,10 +46,10 @@ private:
                  rotaryKnobThree,
                  rotaryKnobFour;
 
-    juce::Label receiverLabel1 { {}, "Listening to " + message1 },
-                receiverLabel2{ {},  "Listening to " + message2 },
-                receiverLabel3{ {},  "Listening to " + message3 },
-                receiverLabel4{ {},  "Listening to " + message4 };
+    juce::Label receiverLabel1 { {}, "Recieving " + message1 },
+                receiverLabel2{ {},  "Recieving " + message2 },
+                receiverLabel3{ {},  "Recieving " + message3 },
+                receiverLabel4{ {},  "Recieving " + message4 };
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (hRecievers)
 };
