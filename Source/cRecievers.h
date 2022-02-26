@@ -29,8 +29,8 @@ public:
     
     void showConnectionErrorMessage(const juce::String& messageText);
 
-    int portNum = 9000;
-    juce::String recieverIp = "192.168.86.31";
+    int portNum = 7979;
+    juce::String recieverIp = "127.0.0.1";
     
     juce::String message1 = "/1/fader1";
     juce::String message2 = "/1/fader2";
@@ -46,7 +46,7 @@ private:
                  rotaryKnobThree,
                  rotaryKnobFour;
 
-    juce::Label receiverLabel1 { {}, "Receiver 1" },
+    juce::Label receiverLabel1 { {}, message1 + " " + recieverIp },
                 receiverLabel2{ {}, "Receiver 2" },
                 receiverLabel3{ {}, "Receiver 3" },
                 receiverLabel4{ {}, "Receiver 4" };

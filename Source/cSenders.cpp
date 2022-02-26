@@ -49,6 +49,13 @@ cSenders::cSenders()
            rotaryKnobFour.setSliderStyle(juce::Slider::RotaryVerticalDrag);
            rotaryKnobFour.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
            addAndMakeVisible(rotaryKnobFour);
+    
+           addAndMakeVisible(senderIPLabel);
+           addAndMakeVisible(senderMessageOne);
+           addAndMakeVisible(senderMessageTwo);
+           addAndMakeVisible(senderMessageThree);
+           addAndMakeVisible(senderMessageFour);
+    
            //==============================================================================
 
             rotaryKnobOne.onValueChange = [this]                                                    //OSC Message of Knob 1
@@ -107,6 +114,12 @@ void cSenders::resized()
     rotaryKnobTwo.setBoundsRelative(0.25, 0.10, 0.25, 0.80);
     rotaryKnobThree.setBoundsRelative(0.50, 0.10, 0.25, 0.80);
     rotaryKnobFour.setBoundsRelative(0.75, 0.10, 0.25, 0.80);
+    
+    senderIPLabel.setBoundsRelative(0.01, 0.85, 0.25, 0.20);
+    senderMessageOne.setBoundsRelative(0.08, 0.70, 0.25, 0.20);
+    senderMessageTwo.setBoundsRelative(0.35, 0.70, 0.25, 0.20);
+    senderMessageThree.setBoundsRelative(0.60, 0.70, 0.25, 0.20);
+    senderMessageFour.setBoundsRelative(0.85, 0.70, 0.25, 0.20);
 
 }
 void cSenders::showConnectionErrorMessage(const juce::String &messageText)
