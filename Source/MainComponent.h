@@ -10,6 +10,8 @@
 #include "hRecievers.h"
 #include "pRecievers.h"
 
+#include "sendersControl.h"
+
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
@@ -40,6 +42,8 @@ public:
         
         const auto tabColour1 = getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId).darker(0.1f);
         const auto tabColour2 = getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId).darker(0.1f);
+        
+        TopTabs.addTab("Senders Control", tabColour1, &sControl, false);
         
         TopTabs.addTab("Companion Senders", tabColour1, &cSenders, false);
         TopTabs.addTab("Hardware Senders", tabColour1, &hSenders, false);
@@ -83,7 +87,7 @@ private:
     hRecievers hRecievers;
     pRecievers pRecievers;
 
-
+    sendersControl sControl;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)

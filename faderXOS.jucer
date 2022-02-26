@@ -4,6 +4,12 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
   <MAINGROUP id="xdBAaX" name="faderXOS">
     <GROUP id="{7782F6A4-AD52-6D42-5DA3-0C9873830B1E}" name="Source">
+      <GROUP id="{1098823B-5A14-FDB3-3F5B-B4F2446BE751}" name="Control Menus">
+        <FILE id="GQ3hik" name="sendersControl.cpp" compile="1" resource="0"
+              file="Source/sendersControl.cpp"/>
+        <FILE id="X6xZMR" name="sendersControl.h" compile="0" resource="0"
+              file="Source/sendersControl.h"/>
+      </GROUP>
       <GROUP id="{A9AF58B7-7932-49DD-A2A8-EAF6A24D84A7}" name="Recievers">
         <FILE id="YWOvsR" name="cRecievers.cpp" compile="1" resource="0" file="Source/cRecievers.cpp"/>
         <FILE id="GNgzfu" name="cRecievers.h" compile="0" resource="0" file="Source/cRecievers.h"/>

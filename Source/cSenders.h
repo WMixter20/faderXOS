@@ -25,12 +25,13 @@ public:
     //void paint (juce::Graphics&) override;
     void resized() override;
     void showConnectionErrorMessage(const juce::String& messageText);
+    void messages (const juce::String message1);
     
-    int portNum = 12321;
+    int portNum = 9000;
     //"192.168.86.30"
-    juce::String targetIp = "127.0.0.1";
+    juce::String targetIp = "192.168.86.31";
     
-    juce::String message1 = "/style/text/1/18";
+    juce::String message1 = "/1/fader1";
     juce::String message2 = "/1/fader2";
     juce::String message3 = "/1/fader3";
     juce::String message4 = "/1/fader4";
@@ -43,21 +44,17 @@ private:
                  rotaryKnobThree,
                  rotaryKnobFour;
 
-   juce::Label senderLabelOne { {},  "Sender 1"},
-               senderLabelTwo{ {},   "Sender 2" },
-               senderLabelThree{ {}, "Sender 3" },
-               senderLabelFour{ {},  "Sender 4" },
-               senderIPLabel { {}, targetIp},
-               senderMessageOne{ {}, message1},
-               senderMessageTwo{ {}, message2},
-               senderMessageThree{ {}, message3},
-               senderMessageFour{ {}, message4};
+   juce::Label senderLabelOne { {}, "Listening to " + message1 },
+               senderLabelTwo{ {}, "Listening to " + message2},
+               senderLabelThree{ {}, "Listening to " + message3},
+               senderLabelFour{ {}, "Listening to " + message4};
 
 
     juce::OSCSender senderOne,
                     senderTwo,
                     senderThree,
                     senderFour;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (cSenders)
 };
