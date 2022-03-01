@@ -60,7 +60,7 @@ pSenders::pSenders()
 
             rotaryKnobOne.onValueChange = [this]                                                    //OSC Message of Knob 1
                 {
-                if (!senderOne.send( message1, (float)rotaryKnobOne.getValue()))
+                if (!senderOne.send( message1))
                     showConnectionErrorMessage("Error: could not send OSC message.");
                
                 };

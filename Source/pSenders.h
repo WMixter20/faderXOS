@@ -26,11 +26,13 @@ public:
     void resized() override;
     void showConnectionErrorMessage(const juce::String& messageText);
     
-    int portNum = 12321;
+    int portNum = 53000;
     //"192.168.86.30"
-    juce::String targetIp = "127.0.0.1";
+    juce::String targetIp = "192.168.86.30";
     
-    juce::String message1 = "/style/text/1/18";
+    juce::String message1 = "/workspace/FC25FCEF-C747-423C-A174-0525D1801EE2/select/next";
+    //juce::String message11= "/workspace/FC25FCEF-C747-423C-A174-0525D1801EE2/select/previous";
+    
     juce::String message2 = "/1/fader2";
     juce::String message3 = "/1/fader3";
     juce::String message4 = "/1/fader4";
@@ -43,7 +45,7 @@ private:
                  rotaryKnobThree,
                  rotaryKnobFour;
 
-   juce::Label senderLabelOne { {},  "Sender 1"},
+   juce::Label senderLabelOne { {},  "Selector"},
                senderLabelTwo{ {},   "Sender 2" },
                senderLabelThree{ {}, "Sender 3" },
                senderLabelFour{ {},  "Sender 4" },
