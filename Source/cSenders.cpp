@@ -100,7 +100,7 @@ cSenders::cSenders()
                 };
 
                 if (!senderFour.connect(targetIp, portNum))                                            //Target/Port of Knob 4
-                showConnectionErrorMessage("Error: could not connect to UDP port " + portNum);
+                showConnectionErrorMessage("Error: could not connect to UDP port ");
 
 
     

@@ -16,36 +16,113 @@ hSenders::hSenders()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
+    
+           //==============================================================================
+           senderLabelOne.attachToComponent(&rotaryKnobOne, false);
+           addAndMakeVisible (senderLabelOne);
 
-}
+           rotaryKnobOne.setRange(0, 127);
+           rotaryKnobOne.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+           rotaryKnobOne.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
+           addAndMakeVisible(rotaryKnobOne);
 
-hSenders::~hSenders()
-{
-}
+           senderLabelTwo.attachToComponent(&rotaryKnobTwo, false);
+           addAndMakeVisible(senderLabelTwo);
 
-void hSenders::paint (juce::Graphics& g)
-{
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
+           rotaryKnobTwo.setRange(0, 127);
+           rotaryKnobTwo.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+           rotaryKnobTwo.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
+           addAndMakeVisible(rotaryKnobTwo);
 
-       You should replace everything in this method with your own
-       drawing code..
-    */
+           senderLabelThree.attachToComponent(&rotaryKnobThree, false);
+           addAndMakeVisible(senderLabelThree);
 
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+           rotaryKnobThree.setRange(0, 127);
+           rotaryKnobThree.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+           rotaryKnobThree.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
+           addAndMakeVisible(rotaryKnobThree);
 
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+           senderLabelFour.attachToComponent(&rotaryKnobFour, false);
+           addAndMakeVisible(senderLabelFour);
 
-    g.setColour (juce::Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("hSenders", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+           rotaryKnobFour.setRange(0, 127);
+           rotaryKnobFour.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+           rotaryKnobFour.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
+           addAndMakeVisible(rotaryKnobFour);
+    
+           addAndMakeVisible(senderIPLabel);
+           addAndMakeVisible(senderMessageOne);
+           addAndMakeVisible(senderMessageTwo);
+           addAndMakeVisible(senderMessageThree);
+           addAndMakeVisible(senderMessageFour);
+    
+           //==============================================================================
+
+            rotaryKnobOne.onValueChange = [this]                                                    //OSC Message of Knob 1
+                {
+                if (!senderOne.send( message1, (float)rotaryKnobOne.getValue()))
+                    showConnectionErrorMessage("Error: could not send OSC message.");
+               
+                };
+                if (!senderOne.connect(targetIp, portNum))                                             //Target/Port of Knob 1 for TouchOSC
+                    showConnectionErrorMessage("Error: could not connect to UDP port ");
+
+
+           
+            //==============================================================================
+
+            rotaryKnobTwo.onValueChange = [this]                                                   //OSC Message of Knob 2
+                {
+                if (!senderTwo.send( message2, (float)rotaryKnobTwo.getValue()))
+                    showConnectionErrorMessage("Error: could not send OSC message.");
+                };
+
+                if (!senderTwo.connect(targetIp, portNum))                                             //Target/Port of Knob 2
+                showConnectionErrorMessage("Error: could not connect to UDP port ");
+
+            //==============================================================================
+
+            rotaryKnobThree.onValueChange = [this]                                                 //OSC Message of Knob 3
+                {
+                if (!senderThree.send( message3, (float)rotaryKnobThree.getValue()))
+                    showConnectionErrorMessage("Error: could not send OSC message.");
+                };
+
+                if (!senderThree.connect(targetIp, portNum))                                           //Target/Port of Knob 3
+                showConnectionErrorMessage("Error: could not connect to UDP port ");
+
+            //==============================================================================
+
+            rotaryKnobFour.onValueChange = [this]                                                  //OSC Message of Knob 4
+                {
+                if (!senderFour.send( message4, (float)rotaryKnobFour.getValue()))
+                    showConnectionErrorMessage("Error: could not send OSC message.");
+                };
+
+                if (!senderFour.connect(targetIp, portNum))                                            //Target/Port of Knob 4
+                showConnectionErrorMessage("Error: could not connect to UDP port ");
+         
+
 }
 
 void hSenders::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+    rotaryKnobOne.setBoundsRelative(0.00, 0.10, 0.25, 0.80);
+    rotaryKnobTwo.setBoundsRelative(0.25, 0.10, 0.25, 0.80);
+    rotaryKnobThree.setBoundsRelative(0.50, 0.10, 0.25, 0.80);
+    rotaryKnobFour.setBoundsRelative(0.75, 0.10, 0.25, 0.80);
+    
+    senderIPLabel.setBoundsRelative(0.01, 0.85, 0.25, 0.20);
+    senderMessageOne.setBoundsRelative(0.08, 0.70, 0.25, 0.20);
+    senderMessageTwo.setBoundsRelative(0.35, 0.70, 0.25, 0.20);
+    senderMessageThree.setBoundsRelative(0.60, 0.70, 0.25, 0.20);
+    senderMessageFour.setBoundsRelative(0.85, 0.70, 0.25, 0.20);
 
+}
+void hSenders::showConnectionErrorMessage(const juce::String &messageText)
+{
+    juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::WarningIcon,
+          "Connection Error",
+          messageText,
+          "Ok");
 }
