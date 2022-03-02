@@ -1,8 +1,8 @@
 /*
   ==============================================================================
 
-    pRecievers.cpp
-    Created: 23 Feb 2022 11:20:45am
+    hRecievers.cpp
+    Created: 23 Feb 2022 11:20:30am
     Author:  Will Mixter
 
   ==============================================================================
@@ -14,38 +14,85 @@
 //==============================================================================
 pRecievers::pRecievers()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
+    receiverLabel1.attachToComponent(&rotaryKnobOne, false);                            //Drawing Knob 1 and Label
+    addAndMakeVisible(receiverLabel1);
+
+    rotaryKnobOne.setRange(0, 127);
+    rotaryKnobOne.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    rotaryKnobOne.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 150, 25);
+    addAndMakeVisible(rotaryKnobOne);
+
+    receiverLabel2.attachToComponent(&rotaryKnobTwo, false);                            //Drawing Knob 2 and Label
+    addAndMakeVisible(receiverLabel2);
+
+    rotaryKnobTwo.setRange(0, 127);
+    rotaryKnobTwo.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    rotaryKnobTwo.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 150, 25);
+    addAndMakeVisible(rotaryKnobTwo);
+
+    receiverLabel3.attachToComponent(&rotaryKnobThree, false);                            //Drawing Knob 3 and Label
+    addAndMakeVisible(receiverLabel3);
+
+    rotaryKnobThree.setRange(0, 127);
+    rotaryKnobThree.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    rotaryKnobThree.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 150, 25);
+    addAndMakeVisible(rotaryKnobThree);
+
+    receiverLabel4.attachToComponent(&rotaryKnobFour, false);                            //Drawing Knob 4 and Label
+    addAndMakeVisible(receiverLabel4);
+
+    rotaryKnobFour.setRange(0, 127);
+    rotaryKnobFour.setSliderStyle(juce::Slider::RotaryVerticalDrag);
+    rotaryKnobFour.setTextBoxStyle(juce::Slider::TextBoxBelow, true, 150, 25);
+    addAndMakeVisible(rotaryKnobFour);
+
+    //==============================================================================
+    if(!connect(portNum))
+       showConnectionErrorMessage("Error: could not connect to UDP port");
+    
+    addListener(this, message1);
+    addListener(this, message2);
+    addListener(this, message3);
+    addListener(this, message4);
+
 
 }
 
-pRecievers::~pRecievers()
+void pRecievers::oscMessageReceived(const juce::OSCMessage &message)
 {
-}
+    if (message.getAddressPattern() == message1 && message.size() == 1 && message[0].isFloat32())
+           {
+               rotaryKnobOne.setValue(juce::jlimit(-120.0f, 127.0f, message[0].getFloat32()));
+           };
 
-void pRecievers::paint (juce::Graphics& g)
-{
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
+           if (message.getAddressPattern() == message2 && message.size() == 1 && message[0].isFloat32())
+           {
+               rotaryKnobTwo.setValue(juce::jlimit(0.0f, 127.0f, message[0].getFloat32()));
+           };
 
-       You should replace everything in this method with your own
-       drawing code..
-    */
+           if (message.getAddressPattern() == message3 && message.size() == 1 && message[0].isFloat32())
+           {
+               rotaryKnobThree.setValue(juce::jlimit(0.0f, 127.0f, message[0].getFloat32()));
+           };
 
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour (juce::Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("pRecievers", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+           if (message.getAddressPattern() == message4 && message.size() == 1 && message[0].isFloat32())
+           {
+               rotaryKnobFour.setValue(juce::jlimit(0.0f, 127.0f, message[0].getFloat32()));
+           };
 }
 
 void pRecievers::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+    rotaryKnobOne.setBoundsRelative(0.00, 0.10, 0.25, 0.80);
+    rotaryKnobTwo.setBoundsRelative(0.25, 0.10, 0.25, 0.80);
+    rotaryKnobThree.setBoundsRelative(0.50, 0.10, 0.25, 0.80);
+    rotaryKnobFour.setBoundsRelative(0.75, 0.10, 0.25, 0.80);
+}
 
+void pRecievers::showConnectionErrorMessage(const juce::String &messageText)
+{
+    juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::WarningIcon,
+          "Connection Error",
+          messageText,
+          "Ok");
 }

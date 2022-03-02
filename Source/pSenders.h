@@ -33,7 +33,7 @@ public:
     juce::String message1 = "/workspace/FC25FCEF-C747-423C-A174-0525D1801EE2/select/next";
     //juce::String message11= "/workspace/FC25FCEF-C747-423C-A174-0525D1801EE2/select/previous";
     
-    juce::String message2 = "/1/fader2";
+    juce::String message2 = "/settings/audio/maxVolume";
     juce::String message3 = "/1/fader3";
     juce::String message4 = "/1/fader4";
     
