@@ -29,7 +29,7 @@ pSenders::pSenders()
            senderLabelTwo.attachToComponent(&rotaryKnobTwo, false);
            addAndMakeVisible(senderLabelTwo);
 
-           rotaryKnobTwo.setRange(0, 127);
+           rotaryKnobTwo.setRange(-70, 10);
            rotaryKnobTwo.setSliderStyle(juce::Slider::RotaryVerticalDrag);
            rotaryKnobTwo.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 150, 25);
            addAndMakeVisible(rotaryKnobTwo);
